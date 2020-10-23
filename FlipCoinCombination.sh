@@ -89,10 +89,28 @@ doubletCombination(){
     storePercent
 }
 
+TripletCombination(){
+    local count=0
+    while [ $count -lt 100 ]
+    do
+      local coinStatus1=$(getCoinStatus)
+      local coinStatus2=$(getCoinStatus)
+      local coinStatus3=$(getCoinStatus)
+
+      
+      local coinStatus=`echo $coinStatus1""$coinStatus2""$coinStatus3`
+
+      storeCount $coinStatus
+
+      ((count++))
+    done
+    storePercent
+}
 
 
 singletCombination
 doubletCombination
+TripletCombination
 
 echo ${combinationCountDict[@]}
 echo ${combinationPercentDict[@]}
